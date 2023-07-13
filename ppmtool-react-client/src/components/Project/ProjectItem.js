@@ -35,7 +35,7 @@ class ProjectItem extends Component {
             </div>
         </div>
     </div>
-    )
+    );
   }
 }
 
