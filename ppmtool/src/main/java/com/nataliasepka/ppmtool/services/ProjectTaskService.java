@@ -5,6 +5,8 @@ import com.nataliasepka.ppmtool.domain.ProjectTask;
 import com.nataliasepka.ppmtool.repositories.BacklogRepository;
 import com.nataliasepka.ppmtool.repositories.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,5 +39,9 @@ public class ProjectTaskService {
             projectTask.setStatus("TO_DO");
         }
         return projectTaskRepository.save(projectTask);
+    }
+
+    public Iterable<ProjectTask>findBacklogById(String id) {
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
     }
 }

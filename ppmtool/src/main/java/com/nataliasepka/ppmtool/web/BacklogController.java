@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/backlog")
 @CrossOrigin
@@ -28,5 +30,10 @@ public class BacklogController {
         ProjectTask projectTask1 = projectTaskService.addProjectTask(backlog_id, projectTask);
 
         return new ResponseEntity<ProjectTask>(projectTask1, HttpStatus.CREATED);
+    }
+
+    @GetMapping("{backlog_id}")
+    public Iterable<ProjectTask> getProjectBacklog (@PathVariable String backlog_id) {
+        return projectTaskService.findBacklogById(backlog_id);
     }
 }
