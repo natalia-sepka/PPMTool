@@ -1,4 +1,4 @@
-import { GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK } from "../actions/types"; "../actions/types";
+import { GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK } from "../actions/types";
 
 
 const initialState = {
@@ -6,7 +6,7 @@ const initialState = {
     project_task: {}
 }
 
-export default function(state = initialState, action)
+export default function(state = initialState, action){
     switch(action.type) {
         case GET_BACKLOG:
             return {
@@ -20,9 +20,10 @@ export default function(state = initialState, action)
             }
         case DELETE_PROJECT_TASK:
             return {
-                ...state,
+                ...state
                 //TO DO LATER
             }
         default:
             return state;
+    }
 }
