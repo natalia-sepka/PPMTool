@@ -1,5 +1,6 @@
 import axios from "axios";
-import { GET_ERRORS, GET_BACKLOG, GET_PROJECT_TASK } from "./types";
+import { GET_ERRORS, GET_BACKLOG, GET_PROJECT_TASK,  } from "./types";
+import { type } from "@testing-library/user-event/dist/type";
 
 
 export const addProjectTask = (backlog_id, project_task, history) => async dispatch => {
@@ -42,5 +43,21 @@ export const getProjectTask = (backlog_id, pt_id, history) => async dispatch => 
         })
     } catch(err) {
         history.push("/dashboard")
+    }
+}
+
+export const updateProjectTask = (backlog_id, pt_id, project_task, history) => async dispatch => {
+    try {
+        await axios.patch(`/api/backlog/${backlog_id}/${pt_id}`, project_task)
+        history.push(`/projectBoard/${backlog_id}`)
+        dispatch ({
+            type: GET_ERRORS,
+            payload: {}
+        })
+    } catch(err) {
+        dispatch ({
+            type: GET_ERRORS,
+            payload: err.response.data
+        })
     }
 }
