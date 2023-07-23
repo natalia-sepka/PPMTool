@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import UpdateProject from "./components/Project/UpdateProject";
 import AddProjectTask from "./components/ProjectBoard/ProjectTasks/AddProjectTask";
+import UpdateProjectTask from "./components/ProjectBoard/ProjectTasks/UpdateProjectTask";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
             <Route exact path="/updateProject/:id" component={ props => <UpdateProject {...props} /> } />
             <Route exact path="/projectBoard/:id" component={ props => <ProjectBoard {...props} /> } />
             <Route exact path="/addProjectTask/:id" component={ props => <AddProjectTask {...props} /> } />
+            <Route exact path="/updateProjectTask/:backlog_id/:pt_id" component={ props => <UpdateProjectTask {...props} /> } />
           </div>
         </Router>
       </Provider>
